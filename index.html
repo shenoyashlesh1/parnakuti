@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parnakuti Homestay – Manipal, Karnataka</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #f5f0e8;
+    --warm-white: #faf8f4;
+    --forest: #2d4a3e;
+    --moss: #4a6741;
+    --gold: #c9a84c;
+    --terracotta: #c4714a;
+    --dark: #1a2420;
+    --text: #3a3028;
+    --muted: #7a6f64;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--warm-white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 20px 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: all 0.4s ease;
+    background: transparent;
+  }
+  nav.scrolled {
+    background: rgba(250,248,244,0.95);
+    backdrop-filter: blur(12px);
+    padding: 14px 60px;
+    box-shadow: 0 2px 30px rgba(0,0,0,0.08);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--warm-white);
+    letter-spacing: 0.03em;
+    transition: color 0.4s;
+  }
+  nav.scrolled .nav-logo { color: var(--forest); }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.88);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  nav.scrolled .nav-links a { color: var(--muted); }
+  .nav-links a:hover { color: var(--gold) !important; }
+  .nav-book-btn {
+    padding: 10px 28px;
+    background: var(--gold);
+    color: var(--dark);
+    border: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .nav-book-btn:hover { background: var(--forest); color: var(--cream); }
+
+  /* ── HERO ── */
+  .hero {
+    height: 100vh; min-height: 700px;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(160deg, rgba(20,38,30,0.55) 0%, rgba(40,60,45,0.35) 60%, rgba(180,100,50,0.15) 100%),
+      url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1800&q=90') center/cover no-repeat;
+    transform: scale(1.04);
+    animation: heroZoom 18s ease-in-out infinite alternate;
+  }
+  @keyframes heroZoom {
+    from { transform: scale(1.04); }
+    to   { transform: scale(1.00); }
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.05) 50%, rgba(0,0,0,0.4) 100%);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    text-align: center; padding: 0 24px;
+    animation: heroFade 1.2s ease-out;
+  }
+  @keyframes heroFade {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.2rem, 8vw, 6.5rem);
+    font-weight: 300;
+    color: var(--warm-white);
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: rgba(255,255,255,0.75);
+  }
+  .hero-sub {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.78);
+    font-weight: 300;
+    margin: 20px 0 42px;
+    letter-spacing: 0.04em;
+  }
+  .hero-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    padding: 15px 40px;
+    background: var(--gold);
+    color: var(--dark);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: none; border-radius: 2px;
+    cursor: pointer; text-decoration: none;
+    transition: all 0.3s;
+  }
+  .btn-primary:hover { background: #e6b84e; transform: translateY(-2px); }
+  .btn-outline {
+    padding: 15px 40px;
+    background: transparent;
+    color: var(--warm-white);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1.5px solid rgba(255,255,255,0.55);
+    border-radius: 2px;
+    cursor: pointer; text-decoration: none;
+    transition: all 0.3s;
+  }
+  .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.1); }
+  .hero-scroll {
+    position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+    z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: rgba(255,255,255,0.6); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    animation: bounce 2.5s ease-in-out infinite;
+  }
+  @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+  .scroll-line { width: 1px; height: 50px; background: rgba(255,255,255,0.35); }
+
+  /* ── STATS STRIP ── */
+  .stats-strip {
+    background: var(--forest);
+    padding: 30px 60px;
+    display: flex; justify-content: space-around; align-items: center;
+    flex-wrap: wrap; gap: 20px;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem; font-weight: 600;
+    color: var(--gold); line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.72rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: rgba(255,255,255,0.6);
+    margin-top: 4px;
+  }
+  .stat-div { width: 1px; height: 48px; background: rgba(255,255,255,0.15); }
+
+  /* ── SECTION DEFAULTS ── */
+  section { padding: 100px 60px; }
+  .section-tag {
+    font-size: 0.72rem; letter-spacing: 0.28em;
+    text-transform: uppercase; color: var(--terracotta);
+    font-weight: 600; margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 400; line-height: 1.15;
+    color: var(--dark);
+  }
+  .section-title em { font-style: italic; color: var(--forest); }
+
+  /* ── ABOUT ── */
+  .about { background: var(--cream); }
+  .about-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .about-img-wrap {
+    position: relative;
+  }
+  .about-img-wrap img {
+    width: 100%; height: 520px; object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 20px 20px 60px rgba(0,0,0,0.12);
+  }
+  .about-accent {
+    position: absolute; bottom: -24px; right: -24px;
+    width: 180px; height: 180px;
+    background: var(--forest);
+    border-radius: 4px; z-index: -1;
+  }
+  .about-gold-tag {
+    position: absolute; top: 24px; left: -24px;
+    background: var(--gold);
+    color: var(--dark);
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    font-weight: 600; padding: 10px 18px;
+  }
+  .about-text { display: flex; flex-direction: column; gap: 20px; }
+  .about-text p {
+    font-size: 1.02rem; line-height: 1.8;
+    color: var(--muted); font-weight: 300;
+  }
+  .about-text p strong { color: var(--text); font-weight: 500; }
+  .about-features {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px;
+  }
+  .ab-feat {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.88rem; color: var(--text); font-weight: 400;
+  }
+  .ab-feat-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--gold); flex-shrink: 0;
+  }
+
+  /* ── ROOMS ── */
+  .rooms { background: var(--warm-white); }
+  .rooms-head { text-align: center; max-width: 600px; margin: 0 auto 64px; }
+  .rooms-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+  }
+  .room-card {
+    border-radius: 4px; overflow: hidden;
+    background: white;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    transition: all 0.4s ease;
+    cursor: pointer;
+  }
+  .room-card:hover { transform: translateY(-8px); box-shadow: 0 16px 50px rgba(0,0,0,0.13); }
+  .room-img {
+    height: 240px; overflow: hidden; position: relative;
+  }
+  .room-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+  .room-card:hover .room-img img { transform: scale(1.07); }
+  .room-badge {
+    position: absolute; top: 16px; left: 16px;
+    background: var(--forest); color: white;
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 2px;
+  }
+  .room-body { padding: 26px 28px 30px; }
+  .room-body h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 500; color: var(--dark);
+    margin-bottom: 8px;
+  }
+  .room-body p {
+    font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 18px;
+  }
+  .room-amenities { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .room-amenities span {
+    font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--cream); color: var(--text);
+    padding: 4px 10px; border-radius: 2px;
+  }
+  .room-price {
+    display: flex; align-items: baseline; gap: 4px;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .price-num { font-size: 1.9rem; font-weight: 600; color: var(--forest); }
+  .price-unit { font-size: 0.82rem; color: var(--muted); }
+
+  /* ── VIEW / EXPERIENCE ── */
+  .experience {
+    background: var(--dark);
+    position: relative; overflow: hidden;
+    padding: 120px 60px;
+  }
+  .exp-bg {
+    position: absolute; inset: 0;
+    background: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80') center/cover no-repeat;
+    opacity: 0.18;
+  }
+  .exp-inner {
+    position: relative; z-index: 2;
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .exp-text .section-tag { color: var(--gold); }
+  .exp-text .section-title { color: var(--warm-white); }
+  .exp-text p { color: rgba(255,255,255,0.65); font-size: 1rem; line-height: 1.85; margin: 22px 0 38px; font-weight: 300; }
+  .exp-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+  .exp-list li {
+    display: flex; align-items: flex-start; gap: 14px;
+    color: rgba(255,255,255,0.8); font-size: 0.95rem;
+  }
+  .exp-icon {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: rgba(201,168,76,0.2); border: 1px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 0.8rem; color: var(--gold);
+  }
+  .exp-cards {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  }
+  .exp-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px; padding: 28px 24px;
+    transition: all 0.3s;
+  }
+  .exp-card:hover { background: rgba(255,255,255,0.09); border-color: rgba(201,168,76,0.4); }
+  .exp-card-icon { font-size: 1.8rem; margin-bottom: 14px; }
+  .exp-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; color: var(--warm-white); margin-bottom: 8px;
+  }
+  .exp-card p { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+
+  /* ── GALLERY ── */
+  .gallery { background: var(--cream); padding: 100px 0; }
+  .gallery-head { text-align: center; max-width: 600px; margin: 0 auto 60px; padding: 0 60px; }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 260px 260px;
+    gap: 10px;
+    padding: 0 10px;
+  }
+  .gal-item { overflow: hidden; border-radius: 3px; }
+  .gal-item img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.6s ease, filter 0.4s;
+    filter: brightness(0.95);
+  }
+  .gal-item:hover img { transform: scale(1.06); filter: brightness(1); }
+  .gal-item.tall { grid-row: span 2; }
+  .gal-item.wide { grid-column: span 2; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { background: var(--warm-white); }
+  .test-head { text-align: center; max-width: 600px; margin: 0 auto 64px; }
+  .test-grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+  }
+  .test-card {
+    background: white; border-radius: 4px;
+    padding: 36px 30px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    position: relative;
+  }
+  .test-stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 16px; }
+  .test-card blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.12rem; font-style: italic;
+    line-height: 1.7; color: var(--text);
+    margin-bottom: 24px;
+  }
+  .test-author { display: flex; align-items: center; gap: 12px; }
+  .test-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--forest);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;
+    color: var(--gold); font-weight: 600;
+  }
+  .test-name { font-size: 0.88rem; font-weight: 600; color: var(--dark); }
+  .test-source { font-size: 0.76rem; color: var(--muted); margin-top: 2px; }
+  .test-quote-mark {
+    position: absolute; top: 20px; right: 24px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; line-height: 1; color: var(--cream);
+    font-weight: 400; z-index: 0;
+  }
+
+  /* ── LOCATION ── */
+  .location { background: var(--forest); padding: 100px 60px; }
+  .location-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+  }
+  .location .section-tag { color: var(--gold); }
+  .location .section-title { color: var(--warm-white); margin-bottom: 28px; }
+  .location-text p { color: rgba(255,255,255,0.65); font-size: 0.98rem; line-height: 1.85; margin-bottom: 36px; }
+  .location-info { display: flex; flex-direction: column; gap: 20px; }
+  .loc-item { display: flex; gap: 16px; align-items: flex-start; }
+  .loc-icon { font-size: 1.2rem; margin-top: 2px; flex-shrink: 0; }
+  .loc-item-text strong {
+    display: block; font-size: 0.82rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 4px;
+  }
+  .loc-item-text span { font-size: 0.92rem; color: rgba(255,255,255,0.7); line-height: 1.6; }
+  .map-placeholder {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 4px; overflow: hidden; height: 380px;
+    position: relative;
+  }
+  .map-placeholder iframe { width: 100%; height: 100%; border: none; filter: invert(0.9) hue-rotate(170deg); }
+  .map-label {
+    position: absolute; bottom: 16px; left: 16px;
+    background: var(--forest);
+    color: var(--gold);
+    font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 8px 16px; border-radius: 2px; font-weight: 600;
+  }
+
+  /* ── BOOKING CTA ── */
+  .booking-cta {
+    background: var(--cream); padding: 100px 60px; text-align: center;
+  }
+  .booking-cta-inner { max-width: 700px; margin: 0 auto; }
+  .booking-cta .section-title { margin-bottom: 16px; }
+  .booking-cta p { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 44px; }
+  .cta-contact {
+    display: flex; justify-content: center; gap: 50px; flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .cta-contact-item { text-align: center; }
+  .cta-contact-label {
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--terracotta); font-weight: 600; margin-bottom: 6px;
+  }
+  .cta-contact-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; color: var(--dark);
+  }
+  .cta-contact-val a { color: var(--dark); text-decoration: none; transition: color 0.2s; }
+  .cta-contact-val a:hover { color: var(--forest); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark); padding: 60px 60px 30px;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 30px;
+  }
+  .footer-brand .nav-logo { color: var(--warm-white); font-size: 1.6rem; }
+  .footer-brand p {
+    font-size: 0.87rem; color: rgba(255,255,255,0.45);
+    line-height: 1.8; margin: 14px 0 22px;
+  }
+  .footer-social { display: flex; gap: 12px; }
+  .social-btn {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem; color: rgba(255,255,255,0.5);
+    text-decoration: none; transition: all 0.3s;
+  }
+  .social-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .footer-col h4 {
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,255,255,0.4); margin-bottom: 20px; font-weight: 500;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul li a {
+    font-size: 0.88rem; color: rgba(255,255,255,0.55);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-col ul li a:hover { color: var(--gold); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.78rem; color: rgba(255,255,255,0.28);
+  }
+
+  /* ── WHATSAPP FLOAT ── */
+  .wa-float {
+    position: fixed; bottom: 28px; right: 28px; z-index: 200;
+    background: #25d366; color: white;
+    width: 56px; height: 56px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; text-decoration: none;
+    box-shadow: 0 6px 24px rgba(37,211,102,0.4);
+    transition: all 0.3s;
+    animation: waPulse 2.5s ease-in-out infinite;
+  }
+  .wa-float:hover { transform: scale(1.1); }
+  @keyframes waPulse {
+    0%,100% { box-shadow: 0 6px 24px rgba(37,211,102,0.4); }
+    50% { box-shadow: 0 6px 40px rgba(37,211,102,0.65); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    nav.scrolled { padding: 12px 24px; }
+    .nav-links { display: none; }
+    section { padding: 70px 24px; }
+    .stats-strip { padding: 24px; gap: 16px; }
+    .stat-div { display: none; }
+    .about-inner, .exp-inner, .location-inner { grid-template-columns: 1fr; gap: 40px; }
+    .about-accent { display: none; }
+    .rooms-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2,1fr); grid-template-rows: auto; }
+    .gal-item.tall, .gal-item.wide { grid-row: auto; grid-column: auto; }
+    .test-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .exp-cards { grid-template-columns: 1fr 1fr; }
+    .cta-contact { gap: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-logo">Parnakuti</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#rooms">Rooms</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#location">Location</a></li>
+  </ul>
+  <a href="tel:+919342759000" class="nav-book-btn">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">✦ Manipal, Karnataka &nbsp;·&nbsp; Est. 2012</div>
+    <h1>Parnakuti<br><em>Homestay</em></h1>
+    <p class="hero-sub">Where the Arabian Sea meets the horizon &amp; every morning feels like a painting</p>
+    <div class="hero-ctas">
+      <a href="tel:+919342759000" class="btn-primary">Book Your Stay</a>
+      <a href="#about" class="btn-outline">Explore More</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stat">
+    <div class="stat-num">4.4★</div>
+    <div class="stat-label">Guest Rating</div>
+  </div>
+  <div class="stat-div"></div>
+  <div class="stat">
+    <div class="stat-num">441+</div>
+    <div class="stat-label">Happy Guests</div>
+  </div>
+  <div class="stat-div"></div>
+  <div class="stat">
+    <div class="stat-num">6</div>
+    <div class="stat-label">Unique Rooms</div>
+  </div>
+  <div class="stat-div"></div>
+  <div class="stat">
+    <div class="stat-num">12+</div>
+    <div class="stat-label">Years of Hospitality</div>
+  </div>
+  <div class="stat-div"></div>
+  <div class="stat">
+    <div class="stat-num">#2</div>
+    <div class="stat-label">B&amp;B in Manipal (TripAdvisor)</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-img-wrap">
+      <div class="about-gold-tag">Since 2012</div>
+      <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=900&q=85" alt="Parnakuti Homestay view">
+      <div class="about-accent"></div>
+    </div>
+    <div class="about-text">
+      <div>
+        <div class="section-tag">Our Story</div>
+        <h2 class="section-title">A Home on the <em>Edge of the Hill</em></h2>
+      </div>
+      <p>Perched on the edge of Manipal hill, <strong>Parnakuti Homestay</strong> offers a rare glimpse of the Arabian Sea shimmering on the horizon. It's not just a place to sleep — it's a world that slows down for you.</p>
+      <p>Owned with heart and run with warmth, Parnakuti is a <strong>pet-friendly, family-friendly</strong> retreat where pets, birds, and nature greet you every morning. Our host Uday brings local wisdom, insider tips, and genuine care to every stay.</p>
+      <div class="about-features">
+        <div class="ab-feat"><div class="ab-feat-dot"></div><span>Arabian Sea View</span></div>
+        <div class="ab-feat"><div class="ab-feat-dot"></div><span>Pet-Friendly</span></div>
+        <div class="ab-feat"><div class="ab-feat-dot"></div><span>Home-Cooked Meals</span></div>
+        <div class="ab-feat"><div class="ab-feat-dot"></div><span>Free Parking</span></div>
+        <div class="ab-feat"><div class="ab-feat-dot"></div><span>Scenic Terrace</span></div>
+        <div class="ab-feat"><div class="ab-feat-dot"></div><span>Air Conditioned</span></div>
+        <div class="ab-feat"><div class="ab-feat-dot"></div><span>Party Space (50 pax)</span></div>
+        <div class="ab-feat"><div class="ab-feat-dot"></div><span>Free Wi-Fi</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROOMS -->
+<section class="rooms" id="rooms">
+  <div class="rooms-head">
+    <div class="section-tag">Accommodation</div>
+    <h2 class="section-title">Rooms Built for <em>Rest &amp; Wonder</em></h2>
+  </div>
+  <div class="rooms-grid">
+    <div class="room-card">
+      <div class="room-img">
+        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=700&q=80" alt="Deluxe Room">
+        <div class="room-badge">Most Popular</div>
+      </div>
+      <div class="room-body">
+        <h3>Deluxe Sea View Room</h3>
+        <p>Wake up to the glimmer of the Arabian Sea. Spacious room with a large window framing the valley and coastline.</p>
+        <div class="room-amenities">
+          <span>AC</span><span>Sea View</span><span>Wi-Fi</span><span>TV</span>
+        </div>
+        <div class="room-price">
+          <span class="price-num">₹2,499</span>
+          <span class="price-unit">/ night</span>
+        </div>
+      </div>
+    </div>
+    <div class="room-card">
+      <div class="room-img">
+        <img src="https://images.unsplash.com/photo-1587985064135-0366536eab42?w=700&q=80" alt="Terrace Studio">
+      </div>
+      <div class="room-body">
+        <h3>Terrace Studio</h3>
+        <p>Private studio on the rooftop terrace. Your own slice of sky — perfect for couples or solo travellers seeking peace.</p>
+        <div class="room-amenities">
+          <span>AC</span><span>Terrace Access</span><span>Wi-Fi</span><span>Fridge</span>
+        </div>
+        <div class="room-price">
+          <span class="price-num">₹1,999</span>
+          <span class="price-unit">/ night</span>
+        </div>
+      </div>
+    </div>
+    <div class="room-card">
+      <div class="room-img">
+        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=700&q=80" alt="Family Apartment">
+      </div>
+      <div class="room-body">
+        <h3>Family Apartment</h3>
+        <p>Spacious apartment ideal for families. Includes a kitchenette, living area, and two sleeping zones for ultimate comfort.</p>
+        <div class="room-amenities">
+          <span>AC</span><span>Kitchenette</span><span>Wi-Fi</span><span>2 Beds</span>
+        </div>
+        <div class="room-price">
+          <span class="price-num">₹3,499</span>
+          <span class="price-unit">/ night</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="exp-bg"></div>
+  <div class="exp-inner">
+    <div class="exp-text">
+      <div class="section-tag">The Parnakuti Life</div>
+      <h2 class="section-title">More Than a Stay.<br><em>An Experience.</em></h2>
+      <p>From watching the lighthouse blink at dusk to sipping coffee as Udupi's valley wakes up — Parnakuti offers moments that stay with you long after you leave.</p>
+      <ul class="exp-list">
+        <li>
+          <div class="exp-icon">🌅</div>
+          <span>Panoramic terrace overlooking the Udupi valley &amp; Arabian Sea</span>
+        </li>
+        <li>
+          <div class="exp-icon">🍛</div>
+          <span>Authentic home-cooked coastal Karnataka meals on request</span>
+        </li>
+        <li>
+          <div class="exp-icon">🐾</div>
+          <span>Pet-friendly stay with resident dogs, birds &amp; a garden to roam</span>
+        </li>
+        <li>
+          <div class="exp-icon">🗺️</div>
+          <span>Personal travel guidance from owner Uday — explore hidden gems</span>
+        </li>
+      </ul>
+    </div>
+    <div class="exp-cards">
+      <div class="exp-card">
+        <div class="exp-card-icon">🎉</div>
+        <h4>Events &amp; Parties</h4>
+        <p>Host birthdays, reunions &amp; small gatherings on our beautiful terrace space for up to 50 guests.</p>
+      </div>
+      <div class="exp-card">
+        <div class="exp-card-icon">🏖️</div>
+        <h4>Beach Day Trips</h4>
+        <p>Malpe Beach, St. Mary's Island and more — just minutes away with local taxi arrangements.</p>
+      </div>
+      <div class="exp-card">
+        <div class="exp-card-icon">🛕</div>
+        <h4>Temple Tours</h4>
+        <p>Visit Udupi Sri Krishna Temple with quicker darshan tips from our well-connected host.</p>
+      </div>
+      <div class="exp-card">
+        <div class="exp-card-icon">📚</div>
+        <h4>Quiet Retreats</h4>
+        <p>Swing on the terrace, read, breathe. No crowds. Just birdsong and the distant hum of the sea.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gallery-head">
+    <div class="section-tag">Visual Journey</div>
+    <h2 class="section-title">See <em>Parnakuti</em> in Its Full Glory</h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gal-item tall">
+      <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80" alt="Homestay">
+    </div>
+    <div class="gal-item">
+      <img src="https://images.unsplash.com/photo-1470770903676-69b98201ea1c?w=600&q=80" alt="View">
+    </div>
+    <div class="gal-item">
+      <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80" alt="Room">
+    </div>
+    <div class="gal-item tall">
+      <img src="https://images.unsplash.com/photo-1596436889106-be35e843f974?w=600&q=80" alt="Terrace">
+    </div>
+    <div class="gal-item wide">
+      <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1000&q=80" alt="Landscape View">
+    </div>
+    <div class="gal-item">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Food">
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="test-head">
+    <div class="section-tag">Guest Voices</div>
+    <h2 class="section-title">What Our Guests <em>Remember</em></h2>
+  </div>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="test-quote-mark">"</div>
+      <div class="test-stars">★★★★★</div>
+      <blockquote>The view from the terrace is absolutely breathtaking. Sitting with a cup of tea, watching the valley wake up — and spotting the lighthouse in the distance. Time just stands still here.</blockquote>
+      <div class="test-author">
+        <div class="test-avatar">A</div>
+        <div>
+          <div class="test-name">Amit S.</div>
+          <div class="test-source">TripAdvisor Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="test-quote-mark">"</div>
+      <div class="test-stars">★★★★★</div>
+      <blockquote>It felt like staying in the lap of nature. The owner Uday added places to our itinerary we'd have never found on our own. Pet-friendly, children-friendly, and genuinely warm hospitality.</blockquote>
+      <div class="test-author">
+        <div class="test-avatar">P</div>
+        <div>
+          <div class="test-name">Priya M.</div>
+          <div class="test-source">TripAdvisor Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="test-quote-mark">"</div>
+      <div class="test-stars">★★★★★</div>
+      <blockquote>Old friends' reunion at Parnakuti — this place brings out the child in you. The food was amazing and the vibe is just unmatched. Already planning our next visit!</blockquote>
+      <div class="test-author">
+        <div class="test-avatar">R</div>
+        <div>
+          <div class="test-name">Rahul K.</div>
+          <div class="test-source">Facebook Review</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location" id="location">
+  <div class="location-inner">
+    <div class="location-text">
+      <div class="section-tag">Find Us</div>
+      <h2 class="section-title">Right Where<br><em>Nature Begins</em></h2>
+      <p>Located in the heart of Manipal, Karnataka — just 1.4 km from the town centre and 59 km from Mangalore International Airport. Easy to find, impossible to forget.</p>
+      <div class="location-info">
+        <div class="loc-item">
+          <div class="loc-icon">📍</div>
+          <div class="loc-item-text">
+            <strong>Address</strong>
+            <span>16-131-F4, Behind Syndicate Institute of Bank Management,<br>2nd Stage, Ananth Nagar, Manipal – 576104, Karnataka</span>
+          </div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon">📞</div>
+          <div class="loc-item-text">
+            <strong>Phone / WhatsApp</strong>
+            <span><a href="tel:+919342759000" style="color:inherit;text-decoration:none">+91 93427 59000</a></span>
+          </div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon">✉️</div>
+          <div class="loc-item-text">
+            <strong>Email</strong>
+            <span><a href="mailto:reachparnakuti@gmail.com" style="color:inherit;text-decoration:none">reachparnakuti@gmail.com</a></span>
+          </div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon">🕐</div>
+          <div class="loc-item-text">
+            <strong>Check-in / Check-out</strong>
+            <span>Check-in: 12:00 PM &nbsp;·&nbsp; Check-out: 11:00 AM</span>
+          </div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon">✈️</div>
+          <div class="loc-item-text">
+            <strong>Nearest Airport</strong>
+            <span>Mangalore International Airport — 59 km</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="map-placeholder">
+        <iframe
+          src="https://maps.google.com/maps?q=Parnakuti+Homestay+Manipal+Karnataka&output=embed"
+          allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <div class="map-label">📍 Parnakuti, Manipal</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING CTA -->
+<section class="booking-cta">
+  <div class="booking-cta-inner">
+    <div class="section-tag">Ready to Escape?</div>
+    <h2 class="section-title">Book Your Stay at <em>Parnakuti</em></h2>
+    <p>Reach out directly for the best rates and personalised arrangements. We're always happy to help you plan the perfect getaway to Manipal.</p>
+    <div class="cta-contact">
+      <div class="cta-contact-item">
+        <div class="cta-contact-label">Call / WhatsApp</div>
+        <div class="cta-contact-val"><a href="tel:+919342759000">+91 93427 59000</a></div>
+      </div>
+      <div class="cta-contact-item">
+        <div class="cta-contact-label">Email Us</div>
+        <div class="cta-contact-val"><a href="mailto:reachparnakuti@gmail.com">reachparnakuti@gmail.com</a></div>
+      </div>
+    </div>
+    <a href="tel:+919342759000" class="btn-primary" style="display:inline-block">📞 &nbsp;Call to Book Now</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-logo">Parnakuti Homestay</div>
+      <p>A hilltop haven in Manipal where the Arabian Sea kisses the horizon and every guest leaves feeling at home.</p>
+      <div class="footer-social">
+        <a class="social-btn" href="https://www.instagram.com/parnakutimanipal/" target="_blank">📷</a>
+        <a class="social-btn" href="https://www.facebook.com/ParnakutiHomestay/" target="_blank">📘</a>
+        <a class="social-btn" href="tel:+919342759000">📞</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#rooms">Our Rooms</a></li>
+        <li><a href="#experience">Experiences</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Nearby</h4>
+      <ul>
+        <li><a href="#">Malpe Beach</a></li>
+        <li><a href="#">St. Mary's Island</a></li>
+        <li><a href="#">Udupi Temple</a></li>
+        <li><a href="#">Manipal University</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+919342759000">+91 93427 59000</a></li>
+        <li><a href="mailto:reachparnakuti@gmail.com">reachparnakuti@gmail.com</a></li>
+        <li><a href="#">Ananth Nagar, Manipal</a></li>
+        <li><a href="#">Karnataka – 576104</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Parnakuti Homestay · Manipal, Karnataka</span>
+    <span>Made with ❤️ for genuine hospitality</span>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a class="wa-float" href="https://wa.me/919342759000" target="_blank" title="Chat on WhatsApp">💬</a>
+
+<script>
+  // Scroll nav
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Smooth reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.room-card, .test-card, .exp-card, .loc-item, .ab-feat').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(28px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
